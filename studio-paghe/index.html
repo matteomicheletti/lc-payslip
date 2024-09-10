@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Buste Paga</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <!-- add JSZip dependency -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.0/jszip.min.js"></script>
+    <!-- add html2pdf dependency -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+    <!-- parse CSV dependency -->
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.0/papaparse.min.js"></script>
+  </head>
+  <body class="bg-gray-100 py-10 px-5">
+    <div
+      class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl"
+    >
+      <div class="md:flex">
+        <div class="p-8">
+          <div
+            class="uppercase tracking-wide text-sm text-indigo-500 font-semibold"
+          >
+            Genera Buste Paga
+          </div>
+          <div class="mt-4">
+            <label
+              class="block text-gray-700 text-sm font-bold mb-2"
+              for="csvFile"
+              >File CSV</label
+            >
+            <input
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="file"
+              id="csvFile"
+              accept=".csv"
+            />
+          </div>
+          <div class="mt-4">
+            <label
+              class="block text-gray-700 text-sm font-bold mb-2"
+              for="month"
+              >Mese</label
+            >
+            <select
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="month"
+            >
+              <option value=" - ">-</option>
+              <option value="01">Gennaio</option>
+              <option value="02">Febbraio</option>
+              <option value="03">Marzo</option>
+              <option value="04">Aprile</option>
+              <option value="05">Maggio</option>
+              <option value="06">Giugno</option>
+              <option value="07">Luglio</option>
+              <option value="08">Agosto</option>
+              <option value="09">Settembre</option>
+              <option value="10">Ottobre</option>
+              <option value="11">Novembre</option>
+              <option value="12">Dicembre</option>
+            </select>
+          </div>
+          <div class="mt-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="year"
+              >Anno</label
+            >
+            <input
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="number"
+              id="year"
+              min="1900"
+              max="3000"
+              step="1"
+              value=""
+            />
+          </div>
+          <div class="mt-4">
+            <button
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              onclick="generatePaySlips()"
+            >
+              Genera Buste Paga
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="output" class="mt-10"></div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
