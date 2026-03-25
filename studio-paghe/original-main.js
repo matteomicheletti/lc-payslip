@@ -544,10 +544,10 @@ const generatePaySlips = async () => {
                 <th>Tempo Straordinario</th>
                 <th>Nome Cantiere</th>
                 <!-- <th>DURC</th> -->
-                <th>Km Auto Pers.</th>
-                <th>Km Auto Az.</th>
+                <!-- <th>Km Auto Pers.</th> -->
+                <!-- <th>Km Auto Az.</th> -->
                 <th>Luogo di Destinazione</th>
-                <th>Note</th>
+                <!-- <th>Note</th> -->
                 <!-- <th>extra</th> -->
             </tr>
             {table_rows}
@@ -555,7 +555,7 @@ const generatePaySlips = async () => {
 
         <table class="summary-table">
             <tr>
-                <td colspan="2"><strong>TOTALE ORE e KM:</strong></td>
+                <td colspan="2"><strong>TOTALE ORE:</strong></td>
             </tr>
             <tr>
                 <td><strong>Totale Ore Ordinarie Lavorate:</strong></td>
@@ -566,58 +566,8 @@ const generatePaySlips = async () => {
                 <td>{ore_IB} ore</td>
             </tr>
             <tr>
-                <td><strong>TOS:</strong></td>
-                <td>{total_straord_hours} ore</td>
-            </tr>
-            <tr>
-                <td><strong>Totale KM Percorsi:</strong></td>
-                <td>{total_km} km</td>
-            </tr>
-        </table>
-
-        <table class="riepilogo-table">
-            <tr>
-                <td colspan="2"><strong>RIEPILOGO IMPORTO:</strong></td>
-            </tr>
-            <tr>
-                <td><strong style="text-color:red;color:red;">Totale da Pagare:</strong></td>
+                <td><strong style="text-color:red;color:red;">Trasferta ITALIA:</strong></td>
                 <td style="text-color:red;color:red;">{totale_da_pagare} Euro</td>
-            </tr>
-            <!-- <tr>
-                <td><strong>POO:</strong></td>
-                <td>{poo}</td>
-            </tr>
-            <tr>
-                <td><strong>POS:</strong></td>
-                <td>{pos}</td>
-            </tr>
-            <tr>
-                <td><strong>Ore ordinarie:</strong></td>
-                <td>{min_ord_val}</td>
-            </tr>
-            <tr>
-                <td><strong>Ore straordinarie:</strong></td>
-                <td>{min_straord_val}</td>
-            </tr> -->
-            <tr>
-                <td><strong>PLUS Straordinario:</strong></td>
-                <td>{importo_straord} Euro</td>
-            </tr>
-            <tr>
-                <td><strong>RIMBORSO KM:</strong></td>
-                <td>{costo_km} Euro</td>
-            </tr>
-            <tr>
-                <td><strong>EXTRA:</strong></td>
-                <td>{total_extra} Euro</td>
-            </tr>
-            <tr>
-                <td><strong>PLUS Ordinario:</strong></td>
-                <td>{importo_ord} Euro</td>
-            </tr>
-            <tr>
-                <td><strong>Buono Pasto Totale:</strong></td>
-                <td>{total_buono_past} Euro</td>
             </tr>
         </table>
     </body>
@@ -715,11 +665,11 @@ const generatePaySlips = async () => {
                 <td>${groupedData[employee][day].tempo_tot_ord}</td>
                 <td>${groupedData[employee][day].tempo_tot_straord}</td>
                 <td>${groupedData[employee][day].nome_cantiere}</td>
-                <td>${groupedData[employee][day].km_auto_personale}</td>
-                <td>${groupedData[employee][day].km_auto_aziendale}</td>
+                <!--<td>${groupedData[employee][day].km_auto_personale}</td>-->
+                <!--<td>${groupedData[employee][day].km_auto_aziendale}</td>-->
                 <!--<td>${groupedData[employee][day].durc}</td>-->
                 <td>${groupedData[employee][day].luogo_destinazione}</td>
-                <td>${groupedData[employee][day].note}</td>
+                <!--<td>${groupedData[employee][day].note}</td>-->
                 <!--<td>${groupedData[employee][day].extra}</td>-->
             </tr>
         `;
@@ -730,13 +680,13 @@ const generatePaySlips = async () => {
     let importo_straord = (min_straord_val / 60) * parseFloat(pos) || 0;
     let importo_IB = 0;
 
-    let ore_IB = 0;
+    let ore_IB = 0;    
     // update on March 2024
     if (min_straord_val / 60 > 5) {
-      let ore_straord = Math.round((min_straord_val / 60) * 0.8);
-      ore_IB = Math.round((min_straord_val / 60)) - ore_straord;
-      importo_straord = ore_straord * parseFloat(pos);
-      importo_IB = ore_IB * parseFloat(pos);
+      ore_staord = Math.round((min_straord_val / 60) * 0.8);
+      ore_IB =  Math.round((min_straord_val / 60) * 0.2);
+      importo_IB = Math.round(importo_straord * 0.2);
+      importo_straord = Math.round(importo_straord * 0.8);
     }
 
     let costo_km =

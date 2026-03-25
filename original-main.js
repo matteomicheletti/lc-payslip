@@ -730,13 +730,13 @@ const generatePaySlips = async () => {
     let importo_straord = (min_straord_val / 60) * parseFloat(pos) || 0;
     let importo_IB = 0;
 
-    let ore_IB = 0;
+    let ore_IB = 0;    
     // update on March 2024
     if (min_straord_val / 60 > 5) {
-      let ore_straord = Math.round((min_straord_val / 60) * 0.8);
-      ore_IB = Math.round((min_straord_val / 60)) - ore_straord;
-      importo_straord = ore_straord * parseFloat(pos);
-      importo_IB = ore_IB * parseFloat(pos);
+      ore_staord = Math.round((min_straord_val / 60) * 0.8);
+      ore_IB =  Math.round((min_straord_val / 60) * 0.2);
+      importo_IB = Math.round(importo_straord * 0.2);
+      importo_straord = Math.round(importo_straord * 0.8);
     }
 
     let costo_km =
