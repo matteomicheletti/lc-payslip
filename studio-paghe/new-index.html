@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Buste Paga (ORIGINALE - CON BUG)</title>
+    <title>Buste Paga</title>
     <link
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
     />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <!-- add JSZip dependency -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.0/jszip.min.js"></script>
+    <!-- add html2pdf dependency -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+    <!-- parse CSV dependency -->
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.0/papaparse.min.js"></script>
   </head>
   <body class="bg-gray-100 py-10 px-5">
     <div
-      class="max-w-md mx-auto bg-red-100 border border-red-400 rounded-xl shadow-md overflow-hidden md:max-w-2xl"
+      class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl"
     >
       <div class="md:flex">
         <div class="p-8">
           <div
-            class="uppercase tracking-wide text-sm text-red-500 font-semibold"
+            class="uppercase tracking-wide text-sm text-green-500 font-semibold"
           >
-            Genera Buste Paga - Studio Paghe — VERSIONE ORIGINALE (CON BUG)
+            Genera Buste Paga - Studio Paghe
           </div>
           <div class="mt-4">
             <label
@@ -76,7 +79,7 @@
           </div>
           <div class="mt-4">
             <button
-              class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               onclick="generatePaySlips()"
             >
               Genera Buste Paga
@@ -87,6 +90,6 @@
     </div>
     <div id="output" class="mt-10"></div>
 
-    <script src="original-main.js"></script>
+    <script src="main.js"></script>
   </body>
 </html>
